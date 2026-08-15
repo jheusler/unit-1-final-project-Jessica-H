@@ -1,7 +1,9 @@
 import "./App.css";
+import Gallery from "./components/Gallery.jsx";
+import paintings from "./data/paintings.js";
 
 function App() {
-  return <h1>Hello, LaunchCode</h1>;
+  return <Gallery paintings={paintings} />;
 }
 
 export default App;
