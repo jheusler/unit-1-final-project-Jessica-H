@@ -2,7 +2,7 @@ import { useState } from "react";
 import PaintingCard from "./PaintingCard.jsx";
 import PaintingLightbox from "./PaintingLightbox.jsx";
 
-function Gallery({ paintings }) {
+function Gallery({ paintings, onDeletePainting }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const selectedPainting = paintings[selectedIndex];
@@ -39,6 +39,7 @@ function Gallery({ paintings }) {
             key={painting.id}
             painting={painting}
             onSelect={() => openPainting(index)}
+            onDelete={() => onDeletePainting(painting.id)}
           />
         ))
       )}

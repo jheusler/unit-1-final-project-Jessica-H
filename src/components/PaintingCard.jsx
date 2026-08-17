@@ -1,4 +1,4 @@
-function PaintingCard({ painting, onSelect }) {
+function PaintingCard({ painting, onSelect, onDelete }) {
   return (
     <article>
       <h3>{painting.title}</h3>
@@ -6,6 +6,9 @@ function PaintingCard({ painting, onSelect }) {
       <p>{painting.description}</p>
       <button type="button" onClick={onSelect}>
         View Painting
+      </button>
+      <button type="button" onClick={onDelete}>
+        Remove Painting
       </button>
     </article>
   );
