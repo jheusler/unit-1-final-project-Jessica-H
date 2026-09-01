@@ -34,14 +34,16 @@ function Gallery({ paintings, onDeletePainting }) {
       {paintings.length === 0 ? (
         <p>No paintings are currently available.</p>
       ) : (
-        paintings.map((painting, index) => (
-          <PaintingCard
-            key={painting.id}
-            painting={painting}
-            onSelect={() => openPainting(index)}
-            onDelete={() => onDeletePainting(painting.id)}
-          />
-        ))
+        <div className="gallery-grid">
+          {paintings.map((painting, index) => (
+            <PaintingCard
+              key={painting.id}
+              painting={painting}
+              onSelect={() => openPainting(index)}
+              onDelete={() => onDeletePainting(painting.id)}
+            />
+          ))}
+        </div>
       )}
 
       {selectedPainting && (
