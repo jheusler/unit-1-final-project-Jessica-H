@@ -1,15 +1,186 @@
 nav {
-  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+nav a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #e0a458;
 }
 
 section {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
-article {
-  padding: 1rem;
+h2 {
   margin-bottom: 1rem;
 }
+
+/* Gallery grid */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Painting card */
+
+.painting-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  border: 1px solid #2e2e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painting-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.painting-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  min-height: 180px;
+}
+
+.painting-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.missing-image-message {
+  padding: 2rem 1rem;
+  margin: 0;
+  color: #999999;
+  text-align: center;
+  font-style: italic;
+}
+
+.painting-card-body {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.painting-medium {
+  color: #b3b3b3;
+  font-style: italic;
+  margin-top: 0;
+}
+
+.painting-description {
+  color: #d9d9d9;
+}
+
+.painting-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* Buttons */
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #8a9a7e;
+  color: #121212;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #9cad90;
+}
+
+/* Lightbox */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 10;
+}
+
+.lightbox {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.lightbox-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  max-height: 60vh;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 60vh;
+  display: block;
+}
+
+.lightbox-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Manage paintings list (Add Painting screen) */
+
+.manage-painting-list {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+}
+
+.manage-painting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+/* Form */
 
 form div {
   margin-bottom: 1rem;
@@ -25,9 +196,39 @@ form textarea {
   padding: 0.5rem;
   width: 100%;
   max-width: 400px;
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
+/* Breakpoints */
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .painting-card-actions {
+    flex-direction: column;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
 }
