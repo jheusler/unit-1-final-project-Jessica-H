@@ -1,9 +1,9 @@
 function About() {
   return (
-    <main>
+    <section>
       <h1>About the Artist</h1>
       <p>This gallery showcases original watercolor paintings.</p>
-    </main>
+    </section>
   );
 }
 

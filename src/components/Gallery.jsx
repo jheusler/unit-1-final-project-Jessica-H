@@ -2,7 +2,7 @@ import { useState } from "react";
 import PaintingCard from "./PaintingCard.jsx";
 import PaintingLightbox from "./PaintingLightbox.jsx";
 
-function Gallery({ paintings, onDeletePainting }) {
+function Gallery({ paintings }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const selectedPainting = paintings[selectedIndex];
@@ -34,16 +34,16 @@ function Gallery({ paintings, onDeletePainting }) {
       {paintings.length === 0 ? (
         <p>No paintings are currently available.</p>
       ) : (
-        <div className="gallery-grid">
+        <ul className="gallery-grid">
           {paintings.map((painting, index) => (
-            <PaintingCard
-              key={painting.id}
-              painting={painting}
-              onSelect={() => openPainting(index)}
-              onDelete={() => onDeletePainting(painting.id)}
-            />
+            <li key={painting.id}>
+              <PaintingCard
+                painting={painting}
+                onSelect={() => openPainting(index)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {selectedPainting && (
