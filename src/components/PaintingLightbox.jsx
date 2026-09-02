@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button.jsx";
 
 function PaintingLightbox({ painting, onPrevious, onNext, onClose }) {
   const [failedImage, setFailedImage] = useState("");
@@ -25,17 +26,17 @@ function PaintingLightbox({ painting, onPrevious, onNext, onClose }) {
         <p className="painting-description">{painting.description}</p>
 
         <div className="lightbox-actions">
-          <button type="button" onClick={onPrevious}>
+          <Button type="button" onClick={onPrevious}>
             Previous
-          </button>
+          </Button>
 
-          <button type="button" onClick={onNext}>
+          <Button type="button" onClick={onNext}>
             Next
-          </button>
+          </Button>
 
-          <button type="button" onClick={onClose}>
+          <Button type="button" onClick={onClose}>
             Close
-          </button>
+          </Button>
         </div>
       </section>
     </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button.jsx";
 
 function ManageGallery({ paintings, onDeletePainting }) {
   const [paintingToDelete, setPaintingToDelete] = useState(null);
@@ -19,9 +20,9 @@ function ManageGallery({ paintings, onDeletePainting }) {
           {paintings.map((painting) => (
             <li key={painting.id}>
               {painting.title}{" "}
-              <button type="button" onClick={() => setPaintingToDelete(painting)}>
+              <Button type="button" onClick={() => setPaintingToDelete(painting)}>
                 Remove Painting
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
@@ -31,12 +32,12 @@ function ManageGallery({ paintings, onDeletePainting }) {
         <section aria-labelledby="delete-confirmation-title">
           <h2 id="delete-confirmation-title">Remove Painting</h2>
           <p>Remove {paintingToDelete.title} from the gallery?</p>
-          <button type="button" onClick={() => setPaintingToDelete(null)}>
+          <Button type="button" onClick={() => setPaintingToDelete(null)}>
             Cancel
-          </button>
-          <button type="button" onClick={confirmDelete}>
+          </Button>
+          <Button type="button" onClick={confirmDelete}>
             Delete
-          </button>
+          </Button>
         </section>
       )}
     </section>
