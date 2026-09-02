@@ -1,8 +1,11 @@
-import { Link, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import "./App.css";
 import About from "./components/About.jsx";
 import AddPaintingForm from "./components/AddPaintingForm.jsx";
-import Gallery from "./components/Gallery.jsx";
+import Footer from "./components/Footer.jsx";
+import Header from "./components/Header.jsx";
+import Home from "./components/Home.jsx";
+import ManageGallery from "./components/ManageGallery.jsx";
 import { useState } from "react";
 import initialPaintings from "./data/paintings.js";
 
@@ -21,27 +24,29 @@ function App() {
 
   return (
     <>
-      <nav>
-        <Link to="/">Gallery</Link>
-        {" | "}
-        <Link to="/about">About</Link>
-        {" | "}
-        <Link to="/add">Add Painting</Link>
-      </nav>
+      <Header />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Gallery paintings={paintings} onDeletePainting={deletePainting} />
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/add"
-          element={<AddPaintingForm onAddPainting={addPainting} />}
-        />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home paintings={paintings} />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/add"
+            element={<AddPaintingForm onAddPainting={addPainting} />}
+          />
+          <Route
+            path="/manage"
+            element={
+              <ManageGallery
+                paintings={paintings}
+                onDeletePainting={deletePainting}
+              />
+            }
+          />
+        </Routes>
+      </main>
+
+      <Footer />
     </>
   );
 }

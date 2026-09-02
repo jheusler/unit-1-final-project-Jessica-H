@@ -1,10 +1,29 @@
-nav {
+/* Header */
+
+.site-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   padding: 1rem 1.5rem;
   background-color: #1a1a1a;
   border-bottom: 1px solid #2e2e2e;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 nav a {
@@ -20,6 +39,24 @@ nav a:hover {
   color: #e0a458;
 }
 
+/* Footer */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: #1a1a1a;
+  border-top: 1px solid #2e2e2e;
+  color: #b3b3b3;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
 section {
   padding: 1.5rem;
 }
@@ -28,12 +65,21 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.gallery-intro {
+  color: #d9d9d9;
+  max-width: 640px;
+  margin-bottom: 1.5rem;
+}
+
 /* Gallery grid */
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Painting card */
@@ -64,6 +110,7 @@ h2 {
 .painting-image {
   width: 100%;
   height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -92,14 +139,6 @@ h2 {
   color: #d9d9d9;
 }
 
-.painting-card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 0.5rem;
-}
-
 /* Buttons */
 
 button {
@@ -118,7 +157,29 @@ button:hover {
   background-color: #9cad90;
 }
 
+.painting-image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.painting-image-button:hover {
+  background: none;
+}
+
 /* Lightbox */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .lightbox-overlay {
   position: fixed;
@@ -129,6 +190,7 @@ button:hover {
   justify-content: center;
   padding: 1.5rem;
   z-index: 10;
+  animation: fade-in 0.2s ease;
 }
 
 .lightbox {
@@ -147,13 +209,15 @@ button:hover {
   justify-content: center;
   background-color: #000000;
   max-height: 60vh;
-  overflow: hidden;
   border-radius: 4px;
 }
 
 .lightbox-image {
   max-width: 100%;
   max-height: 60vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -162,22 +226,6 @@ button:hover {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
-}
-
-/* Manage paintings list (Add Painting screen) */
-
-.manage-painting-list {
-  list-style: none;
-  padding: 0;
-  max-width: 400px;
-}
-
-.manage-painting-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #2e2e2e;
 }
 
 /* Form */
@@ -192,6 +240,7 @@ form label {
 }
 
 form input,
+form select,
 form textarea {
   padding: 0.5rem;
   width: 100%;
@@ -211,8 +260,8 @@ form textarea {
 }
 
 @media (max-width: 600px) {
-  nav {
-    flex-wrap: wrap;
+  .site-header,
+  .site-footer {
     padding: 1rem;
   }
 
@@ -222,10 +271,6 @@ form textarea {
 
   .gallery-grid {
     grid-template-columns: 1fr;
-  }
-
-  .painting-card-actions {
-    flex-direction: column;
   }
 
   .lightbox {
