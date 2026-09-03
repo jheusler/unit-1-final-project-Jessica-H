@@ -2,7 +2,8 @@ import { useState } from "react";
 import PaintingCard from "./PaintingCard.jsx";
 import PaintingLightbox from "./PaintingLightbox.jsx";
 
-function Gallery({ paintings, onDeletePainting }) {
+function Gallery({ paintings }) {
+  // Index of the painting open in the lightbox; null means the lightbox is closed
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const selectedPainting = paintings[selectedIndex];
@@ -15,12 +16,14 @@ function Gallery({ paintings, onDeletePainting }) {
     setSelectedIndex(null);
   }
 
+  // Wraps to the last painting when moving back from the first
   function showPreviousPainting() {
     setSelectedIndex((currentIndex) =>
       currentIndex === 0 ? paintings.length - 1 : currentIndex - 1,
     );
   }
 
+  // Wraps to the first painting when moving past the last
   function showNextPainting() {
     setSelectedIndex((currentIndex) =>
       currentIndex === paintings.length - 1 ? 0 : currentIndex + 1,
@@ -34,16 +37,16 @@ function Gallery({ paintings, onDeletePainting }) {
       {paintings.length === 0 ? (
         <p>No paintings are currently available.</p>
       ) : (
-        <div className="gallery-grid">
+        <ul className="gallery-grid">
           {paintings.map((painting, index) => (
-            <PaintingCard
-              key={painting.id}
-              painting={painting}
-              onSelect={() => openPainting(index)}
-              onDelete={() => onDeletePainting(painting.id)}
-            />
+            <li key={painting.id}>
+              <PaintingCard
+                painting={painting}
+                onSelect={() => openPainting(index)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {selectedPainting && (

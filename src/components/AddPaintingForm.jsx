@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+const MEDIUM_OPTIONS = [
+  "Watercolor on paper",
+  "Gouache on paper",
+  "Ink and watercolor",
+  "Mixed media",
+];
+
+const CURRENT_YEAR = new Date().getFullYear();
+
 function AddPaintingForm({ onAddPainting }) {
   const [formValues, setFormValues] = useState({
     title: "",
     artist: "",
+    year: "",
     medium: "",
     description: "",
     image: "",
@@ -20,15 +30,26 @@ function AddPaintingForm({ onAddPainting }) {
   function handleSubmit(event) {
     event.preventDefault();
 
+    // Validate every field before adding the painting; collect all errors at once
     const newErrors = {};
     if (!formValues.title.trim()) newErrors.title = "Title is required.";
     if (!formValues.artist.trim()) newErrors.artist = "Artist is required.";
-    if (!formValues.medium.trim()) newErrors.medium = "Medium is required.";
+    if (!formValues.year) {
+      newErrors.year = "Year is required.";
+    } else if (formValues.year < 1900 || formValues.year > CURRENT_YEAR) {
+      newErrors.year = `Year must be between 1900 and ${CURRENT_YEAR}.`;
+    }
+    if (!formValues.medium) newErrors.medium = "Medium is required.";
     if (!formValues.description.trim())
       newErrors.description = "Description is required.";
-    if (!formValues.image.trim()) newErrors.image = "Image URL is required.";
+    if (!formValues.image.trim()) {
+      newErrors.image = "Image URL is required.";
+    } else if (!formValues.image.startsWith("/") && !/^https?:\/\//.test(formValues.image)) {
+      newErrors.image = "Image URL must start with / or http(s)://";
+    }
     if (!formValues.alt.trim()) newErrors.alt = "Alt text is required.";
 
+    // Stop here if any field failed validation
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -38,6 +59,7 @@ function AddPaintingForm({ onAddPainting }) {
       id: Date.now(),
       title: formValues.title,
       artist: formValues.artist,
+      year: Number(formValues.year),
       image: formValues.image,
       medium: formValues.medium,
       description: formValues.description,
@@ -47,6 +69,7 @@ function AddPaintingForm({ onAddPainting }) {
     setFormValues({
       title: "",
       artist: "",
+      year: "",
       medium: "",
       description: "",
       image: "",
@@ -58,7 +81,7 @@ function AddPaintingForm({ onAddPainting }) {
   return (
     <section>
       <Link to="/">Back to Gallery</Link>
-      <h2>Add a Painting</h2>
+      <h1>Add a Painting</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -85,14 +108,34 @@ function AddPaintingForm({ onAddPainting }) {
         </div>
 
         <div>
-          <label htmlFor="medium">Medium</label>
+          <label htmlFor="year">Year</label>
           <input
-            type="text"
+            type="number"
+            id="year"
+            name="year"
+            min="1900"
+            max={CURRENT_YEAR}
+            value={formValues.year}
+            onChange={handleChange}
+          />
+          {errors.year && <p>{errors.year}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="medium">Medium</label>
+          <select
             id="medium"
             name="medium"
             value={formValues.medium}
             onChange={handleChange}
-          />
+          >
+            <option value="">Select a medium</option>
+            {MEDIUM_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
           {errors.medium && <p>{errors.medium}</p>}
         </div>
 
@@ -113,6 +156,7 @@ function AddPaintingForm({ onAddPainting }) {
             type="text"
             id="image"
             name="image"
+            placeholder="/images/example.jpg"
             value={formValues.image}
             onChange={handleChange}
           />
