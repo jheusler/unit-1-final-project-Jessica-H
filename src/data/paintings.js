@@ -29,6 +29,39 @@ const paintings = [
     description: "Watercolor night scene with a full moon over dark evergreen trees.",
     alt: "Watercolor painting of a night sky with a full moon and dark evergreen trees",
   },
+  {
+    id: 4,
+    title: "Jewel-Toned Grove",
+    artist: "Jessica Heusler",
+    year: 2025,
+    image: "/images/quiet-grove.jpg",
+    medium: "100% cotton cold-pressed watercolor paper",
+    description:
+      "Loose watercolor treeline with color-blocked canopies over slender trunks and a warm, mottled ground.",
+    alt: "Abstract watercolor painting of a row of trees with colorful loose canopies over thin trunks and an earthy ground",
+  },
+  {
+    id: 5,
+    title: "Wildflowers in Blue Glass",
+    artist: "Jessica Heusler",
+    year: 2025,
+    image: "/images/wildflowers-in-blue-vase.jpg",
+    medium: "100% cotton cold-pressed watercolor paper",
+    description:
+      "Wildflower bouquet in a rounded blue glass vase, with sprays of red, gold, and navy blooms.",
+    alt: "Watercolor painting of a wildflower bouquet in a blue glass vase with red, gold, and navy flowers",
+  },
+  {
+    id: 6,
+    title: "You Belong Somewhere You Feel Free",
+    artist: "Jessica Heusler",
+    year: 2025,
+    image: "/images/wildflower-meadow-dusk.jpg",
+    medium: "100% cotton cold-pressed watercolor paper",
+    description:
+      "Wildflower meadow at dusk, with tall grasses and foxglove spikes against a lavender-pink sky.",
+    alt: "Watercolor painting of a wildflower meadow at dusk with tall grasses, foxglove, and daisies against a purple-pink sky",
+  },
 ];
 
 export default paintings;
