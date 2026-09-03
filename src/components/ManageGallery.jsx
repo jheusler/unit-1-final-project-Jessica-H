@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "./Button.jsx";
 
 function ManageGallery({ paintings, onDeletePainting }) {
+  // Holds the painting pending removal so an in-app confirmation shows first
   const [paintingToDelete, setPaintingToDelete] = useState(null);
 
   function confirmDelete() {

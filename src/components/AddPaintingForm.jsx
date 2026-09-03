@@ -30,6 +30,7 @@ function AddPaintingForm({ onAddPainting }) {
   function handleSubmit(event) {
     event.preventDefault();
 
+    // Validate every field before adding the painting; collect all errors at once
     const newErrors = {};
     if (!formValues.title.trim()) newErrors.title = "Title is required.";
     if (!formValues.artist.trim()) newErrors.artist = "Artist is required.";
@@ -48,6 +49,7 @@ function AddPaintingForm({ onAddPainting }) {
     }
     if (!formValues.alt.trim()) newErrors.alt = "Alt text is required.";
 
+    // Stop here if any field failed validation
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
