@@ -10,12 +10,15 @@ import { useState } from "react";
 import initialPaintings from "./data/paintings.js";
 
 function App() {
+  // Gallery data lives here so it can be shared across routes via props
   const [paintings, setPaintings] = useState(initialPaintings);
 
+  // Appends a new painting to the gallery
   function addPainting(newPainting) {
     setPaintings((currentPaintings) => [...currentPaintings, newPainting]);
   }
 
+  // Removes a painting from the gallery by id
   function deletePainting(id) {
     setPaintings((currentPaintings) =>
       currentPaintings.filter((painting) => painting.id !== id),

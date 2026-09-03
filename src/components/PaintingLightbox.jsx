@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "./Button.jsx";
 
 function PaintingLightbox({ painting, onPrevious, onNext, onClose }) {
+  // Tracks which image URL failed so switching paintings clears the fallback
   const [failedImage, setFailedImage] = useState("");
   const imageFailed = failedImage === painting.image;
 
