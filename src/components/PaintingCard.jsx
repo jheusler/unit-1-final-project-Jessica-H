@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 function PaintingCard({ painting, onSelect }) {
+  // Falls back to a text placeholder if the image URL fails to load
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
     <article className="painting-card">
       <button
         type="button"
-        className="painting-image-button"
+        className="painting-card-button"
         onClick={onSelect}
         aria-label={`View ${painting.title} larger`}
       >
@@ -23,13 +24,8 @@ function PaintingCard({ painting, onSelect }) {
             />
           )}
         </div>
+        <h3 className="painting-title">{painting.title}</h3>
       </button>
-
-      <div className="painting-card-body">
-        <h3>{painting.title}</h3>
-        <p className="painting-medium">{painting.medium}</p>
-        <p className="painting-description">{painting.description}</p>
-      </div>
     </article>
   );
 }

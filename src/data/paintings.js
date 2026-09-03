@@ -53,7 +53,7 @@ const paintings = [
   },
   {
     id: 6,
-    title: "You Belong Somewhere You Feel Free",
+    title: "Wildflower Meadow",
     artist: "Jessica Heusler",
     year: 2025,
     image: "/images/wildflower-meadow-dusk.jpg",
@@ -61,6 +61,18 @@ const paintings = [
     description:
       "Wildflower meadow at dusk, with tall grasses and foxglove spikes against a lavender-pink sky.",
     alt: "Watercolor painting of a wildflower meadow at dusk with tall grasses, foxglove, and daisies against a purple-pink sky",
+  },
+  {
+    id: 7,
+    title: "Ink & Wash: Wildflowers",
+    artist: "Jessica Heusler",
+    year: 2025,
+    image: "/images/wildflower-bouquet-ink-watercolor.jpg",
+    medium:
+      "Watercolor and gouache on 100% cotton cold-pressed paper, with masking fluid for reserved whites",
+    description:
+      "Ink-outlined wildflower bouquet in wet-on-wet watercolor and gouache, against a grey-blue wash background.",
+    alt: "Ink and watercolor painting of a wildflower bouquet in purple, blue, and gold against a grey-blue background",
   },
 ];
 
